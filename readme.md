@@ -1,6 +1,6 @@
 # Social Gamer App #
 
-## About Social Gamer ##
+### About Social Gamer ###
 
 "Social Gamer" is an application for the players. The main advantage of the application is a social networking site that aims to find a soul mate / companion to play together. In addition, the application has functions of exchange games or hardware or total sale.
 The user has a wall which can add their posts or share other posts. All posts can be commented or liked by others.
