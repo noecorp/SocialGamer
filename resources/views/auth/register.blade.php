@@ -28,10 +28,10 @@
                             <label for="gender" class="col-md-4 control-label">Gender</label>
 
                             <div class="col-md-6">
-															<select id="gender" type="text" class="form-control" name="gender">
-																<option value="m">Male</option>
-																<option value="f">Famale</option>
-															</select>
+                                <select id="gender" type="text" class="form-control" name="gender">
+                                    <option value="m">Male</option>
+                                    <option value="f">Famale</option>
+                                </select>
                             </div>
                         </div>
 
