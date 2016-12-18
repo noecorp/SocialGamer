@@ -73,17 +73,24 @@ class UsersController extends Controller
         ], [
             'required' => 'Pole :attribute jest wymagane',
             'email'    => 'Wprowadź poprawny adres email',
-            'min'    => 'Pole :attribute musi mieć minimum :min znaki',
-            'max'  => 'Pole :attribute może mieć maksimum :max znaki',
-            'unique'    => 'Ten adres email jest już zajęty'
+            'min'      => 'Pole :attribute musi mieć minimum :min znaki',
+            'max'      => 'Pole :attribute może mieć maksimum :max znaki',
+            'unique'   => 'Ten adres email jest już zajęty',
         ]);
         
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->gender = $request->gender;
-        $user->save();
         
+        if ($request->file('avatar')) {
+            $avatar_path = 'public/users/' . $id . '/avatars';
+            $upload_path = $request->file('avatar')->store($avatar_path);
+            $avatar_filename = str_replace($avatar_path . '/', '', $upload_path);
+            $user->avatar = $avatar_filename;
+        }
+        
+        $user->save();
         
         return back();
     }
