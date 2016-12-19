@@ -14,11 +14,7 @@
                     
                     <div class="panel-body">
                         
-                        @if(!empty($user->avatar))
-                            <img src="{{ url('user-avatar/' . $user->id . '/300') }}" alt="" class="img-responsive">
-                        @else
-                            <img src="{{ asset('storage/default-avatar.jpg') }}" alt="" class="img-responsive">
-                        @endif
+                        <img src="{{ url('user-avatar/' . $user->id . '/300') }}" alt="" class="img-responsive">
                         
                         <h2><a href="{{ url('/users/' . $user->id) }}">{{ $user->name }}</a></h2>
                         <p>{{ $user->email }}</p>

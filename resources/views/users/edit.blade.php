@@ -7,11 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Edycja profilu użytkownika</div>
     
-                    @if(!empty($user->avatar))
-                        <img src="{{ url('user-avatar/' . $user->id . '/600') }}" alt="" class="img-responsive">
-                    @else
-                        <img src="{{ asset('storage/default-avatar.jpg') }}" alt="" class="img-responsive">
-                    @endif
+                    <img src="{{ url('user-avatar/' . $user->id . '/600') }}" alt="" class="img-responsive">
                     
                     <div class="panel-body">
                         <form action="{{ url('/users/' . $user->id) }}" method="POST" enctype="multipart/form-data">
