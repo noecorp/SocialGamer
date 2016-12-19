@@ -14,12 +14,12 @@ class ImagesController extends Controller
         $user = User::findOrFail($id);
         
         if (strpos($user->avatar, 'http') !== false) {
-            $img = Image::make($user->avatar)->fit($size)->response('jpg', 90);
+            $img = Image::make($user->avatar)->fit($size)->response('jpg', 100);
         } elseif (is_null($user->avatar)) {
-            $img = Image::make(asset('images/default-avatar.jpg'))->fit($size)->response('jpg', 90);
+            $img = Image::make(asset('images/default-avatar.jpg'))->fit($size)->response('jpg', 100);
         } else {
             $avatar_path = asset('storage/users/' . $id . '/avatars/' . $user->avatar);
-            $img = Image::make($avatar_path)->fit($size)->response('jpg', 90);
+            $img = Image::make($avatar_path)->fit($size)->response('jpg', 100);
         }
         
         return $img;
