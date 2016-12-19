@@ -15,7 +15,7 @@
                     <div class="panel-body">
                         
                         @if(!empty($user->avatar))
-                            <img src="{{ asset('storage/users/' . $user->id . '/avatars/' . $user->avatar) }}" alt="" class="img-responsive">
+                            <img src="{{ url('user-avatar/' . $user->id . '/300') }}" alt="" class="img-responsive">
                         @else
                             <img src="{{ asset('storage/default-avatar.jpg') }}" alt="" class="img-responsive">
                         @endif
