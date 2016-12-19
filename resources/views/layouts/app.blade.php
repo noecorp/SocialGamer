@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/fonts/font-awsome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script> window.Laravel = '<?php echo json_encode(['csrfToken' => csrf_token(),]); ?>'</script>
@@ -38,6 +39,16 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <form action="{{ url('/search') }}" method="GET" class="navbar-form pull-left">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="s" placeholder="Szukaj...">
+                            <span class="input-group-btn">
+                                <button type="send" class="btn btn-default">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;

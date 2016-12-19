@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/search', 'SearchUsersController@users');
+
 Route::resource('/users', 'UsersController', ['except' => ['index', 'create', 'store']]);
 
 Route::get('/user-avatar/{id}/{size}', 'ImagesController@user_avatar');
