@@ -12,7 +12,7 @@ class UsersController extends Controller
     
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('permission', ['except' => ['show']]);
     }
     
     /**
@@ -36,10 +36,6 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        if ($id != Auth::id()) {
-            abort(403, 'Brak dostępu!');
-        }
-        
         $user = Auth::user();
         
         return view('users.edit', compact('user'));
@@ -54,10 +50,6 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if ($id != Auth::id()) {
-            abort(403, 'Brak dostępu!');
-        }
-        
         $this->validate($request, [
             'name'  => 'required|min:3|max:255',
             'email' => [
