@@ -13,6 +13,6 @@ class SearchUsersController extends Controller
     {
         $search_phrase = Input::get('s');
         $results_search = User::where('name', 'like', '%' . $search_phrase . '%')->paginate(8);
-        return view('search.users', compact('results_search'));
+        return view('search.users', compact('results_search', 'search_phrase'));
     }
 }

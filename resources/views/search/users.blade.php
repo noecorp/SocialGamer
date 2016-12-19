@@ -23,7 +23,7 @@
                                 @endforeach
                             </div>
                             <div class="text-center">
-                                {{ $results_search }}
+                                {{ $results_search->appends(['s' => $search_phrase])->links() }}
                             </div>
                         @endif
                     </div>
