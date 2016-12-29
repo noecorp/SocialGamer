@@ -11,18 +11,27 @@
 |
 */
 
+//Homepage
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
+//Login page
 Route::get('/home', 'HomeController@index');
 
+//Search Users
 Route::get('/search', 'SearchUsersController@users');
 
+//Users
 Route::resource('/users', 'UsersController', ['except' => ['index', 'create', 'store', 'destroy']]);
 
+//Get specific image
 Route::get('/user-avatar/{id}/{size}', 'ImagesController@user_avatar');
 
-Route::resource('/friends', 'FriendsController', ['except' => ['create', 'edit', 'show']]);
+//Friendship
+Route::get('/friends', 'FriendsController@index');
+Route::post('/friends/{friend}', 'FriendsController@add');
+Route::patch('/friends/{friend}', 'FriendsController@accept');
+Route::delete('/friends/{friend}', 'FriendsController@destroy');

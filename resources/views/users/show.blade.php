@@ -3,46 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                        {{ $user->name }}
-                    </div>
-                    
-                    <div class="panel-body">
 
-                        <img src="{{ url('user-avatar/' . $user->id . '/300') }}" alt="" class="img-responsive">
-                        <br>
-                        @if ($user->id === Auth::id())
-                                <p class="text-center">
-                                    <a href="{{ url('/users/' . $user->id . '/edit') }}" class="btn btn-primary btn-lg">Edytuj profil</a>
-                                </p>
-                        @endif
-
-                    </div>
-                </div>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading text-center">
-                        Informacje
-                    </div>
-
-                    <div class="panel-body">
-
-                        <p>Adres email: {{ $user->email }}</p>
-                        <p>Płeć:
-                            @if ($user->gender == 'm')
-                                Mężczyzna
-                            @else
-                                Kobieta
-                            @endif
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-
-
+            @include('layouts.sidebar')
     
             <div class="col-md-7">
                 <div class="panel panel-default">
@@ -64,6 +26,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection
