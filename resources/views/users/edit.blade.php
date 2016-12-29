@@ -80,7 +80,9 @@
                             <div class="row">
                                 <div class="col-sm-10 col-sm-offset-1">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">Zapisz</button>
+                                        <p class="text-center">
+                                            <button type="submit" class="btn btn-info btn-lg">Zapisz zmiany</button>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
