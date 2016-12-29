@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/search', 'SearchUsersController@users');
 
-Route::resource('/users', 'UsersController', ['except' => ['index', 'create', 'store']]);
+Route::resource('/users', 'UsersController', ['except' => ['index', 'create', 'store', 'destroy']]);
 
 Route::get('/user-avatar/{id}/{size}', 'ImagesController@user_avatar');
+
+Route::resource('/friends', 'FriendsController', ['except' => ['create', 'edit', 'show']]);
