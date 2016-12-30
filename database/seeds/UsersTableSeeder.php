@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('pl_PL');
+        $faker = Faker\Factory::create('pl_PL');
 
         //---// VARIABLES //---//
 
