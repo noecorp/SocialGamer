@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Friend;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,19 +12,23 @@ class FriendsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param $user_id
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($user_id)
     {
+        $user = User::findOrFail($user_id);
 
+        return view('friends.index', compact('user'));
     }
 
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param $friend_id
      * @return \Illuminate\Http\Response
+     * @internal param Request $request
      */
     public function add($friend_id)
     {
@@ -42,9 +47,10 @@ class FriendsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param $friend_id
      * @return \Illuminate\Http\Response
+     * @internal param Request $request
+     * @internal param int $id
      */
     public function accept($friend_id)
     {
@@ -61,8 +67,9 @@ class FriendsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param $friend_id
      * @return \Illuminate\Http\Response
+     * @internal param int $id
      */
     public function destroy($friend_id)
     {

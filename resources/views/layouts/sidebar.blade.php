@@ -16,6 +16,10 @@
 
             <br>
 
+            <p class="text-center">
+                <a href="{{ url('/users/' . $user->id . '/friends') }}">Znajomi: </a><span class="label label-info">{{ $user->friends()->count() }}</span>
+            </p>
+
             @if(Auth::check() && $user->id !== Auth::id())
                 @if( ! friendship($user->id)->exists && ! friendship($user->id)->accepted)
                     <form class="text-center" method="POST" action="{{ url('/friends/' . $user->id) }}">
