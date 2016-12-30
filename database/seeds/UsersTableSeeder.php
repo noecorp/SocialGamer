@@ -2,7 +2,6 @@
 
 use App\Friend;
 use Illuminate\Database\Seeder;
-use Faker\Factory as Faker;
 
 class UsersTableSeeder extends Seeder
 {
