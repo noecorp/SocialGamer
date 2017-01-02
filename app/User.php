@@ -45,4 +45,9 @@ class User extends Authenticatable
         return $this->otherFriends->merge($this->myFriends);
     }
 
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
 }
