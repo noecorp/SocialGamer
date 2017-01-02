@@ -30,6 +30,7 @@ class UsersTableSeeder extends Seeder
                     'gender'   => 'm',
                     'avatar'   => '7dbb528762465f5e7efa095b3497225e.jpeg',
                     'password' => bcrypt($password),
+                    'created_at' => $faker->dateTimeThisYear($max = 'now')
                 ]);
 
                 DB::table('users')->insert([
@@ -38,6 +39,7 @@ class UsersTableSeeder extends Seeder
                     'gender'   => 'f',
                     'avatar'   => '36b2f5ca723acb00d65f186ef8d93c55.jpeg',
                     'password' => bcrypt($password),
+                    'created_at' => $faker->dateTimeThisYear($max = 'now')
                 ]);
             } else {
 
@@ -61,6 +63,7 @@ class UsersTableSeeder extends Seeder
                     'gender'   => $gender,
                     'avatar'   => $avatar,
                     'password' => bcrypt($password),
+                    'created_at' => $faker->dateTimeThisYear($max = 'now')
                 ]);
 
             }
