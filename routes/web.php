@@ -19,7 +19,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //Login page
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
 
 //Search Users
 Route::get('/search', 'SearchUsersController@users');
@@ -38,3 +38,6 @@ Route::delete('/friends/{friend}', 'FriendsController@destroy');
 
 //Posts
 Route::resource('/posts', 'PostsController', ['except' => ['index', 'create']]);
+
+//Wall
+Route::get('/home', 'WallController@index');

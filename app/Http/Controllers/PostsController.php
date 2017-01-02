@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('post_permission', ['except' => ['show', 'store']]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -40,7 +45,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.single-show', compact('post'));
+        return view('posts.single', compact('post'));
     }
 
     /**
@@ -51,7 +56,8 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -63,7 +69,18 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'post_body' => 'required|min:5',
+        ], [
+            'required' => 'Musisz wpisać post.',
+            'min'      => 'To pole musi mieć minimum :min znaków.',
+        ]);
+
+        Post::findOrFail($id)->update([
+            'body'    => $request->post_body,
+        ]);
+
+        return back();
     }
 
     /**
@@ -74,6 +91,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Post::where(['id' => $id])->delete();
+
+        return back();
     }
 }

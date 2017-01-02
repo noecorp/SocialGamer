@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class UserPermission
+class CheckUserPermission
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class UserPermission
     public function handle($request, Closure $next)
     {
 
-        if (Auth::check() && $request->user != Auth::id()) {
+        if (!Auth::check() || $request->user != Auth::id()) {
             abort(403, 'Brak dostępu!');
         }
         
