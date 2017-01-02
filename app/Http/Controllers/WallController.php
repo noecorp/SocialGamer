@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,8 @@ class WallController extends Controller
 
     public function index()
     {
+        Carbon::setLocale('pl');
+
         $friends = Auth::user()->friends();
 
         $friends_ids = [];
