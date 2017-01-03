@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/flat-ui.min.css" rel="stylesheet">
     <link href="/css/custom.css" rel="stylesheet">
     <link href="/fonts/font-awsome/css/font-awesome.css" rel="stylesheet">
 

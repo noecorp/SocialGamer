@@ -14,8 +14,11 @@
         <!-- Styles -->
         <style>
             html, body {
+                background-image: url("/images/welcome-bg.jpg");
+                background-size: cover;
+                background-position: center;
                 background-color: #fff;
-                color: #636b6f;
+                color: #fff;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;

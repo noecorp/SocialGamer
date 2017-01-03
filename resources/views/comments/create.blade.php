@@ -11,7 +11,7 @@
                             <input type="hidden" name="post_id" value="{{ $post->id }}">
                             <span class="input-group-btn">
                                 <button type="send" class="btn btn-default">
-                                    <i class="fa fa-mail-forward" aria-hidden="true"></i>
+                                    Dodaj
                                 </button>
                             </span>
                         </div>

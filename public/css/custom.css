@@ -20,3 +20,8 @@ button.add-comment.btn.btn-info.pull-right{
     top: 0;
     right: -22px;
 }
+
+.comment {
+    font-size: 12px;
+    line-height: 16px;
+}
