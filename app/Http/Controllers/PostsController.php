@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +45,8 @@ class PostsController extends Controller
      */
     public function show($id)
     {
+        Carbon::setLocale('pl');
+
         $post = Post::findOrFail($id);
         return view('posts.single', compact('post'));
     }

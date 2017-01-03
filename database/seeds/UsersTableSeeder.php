@@ -19,6 +19,7 @@ class UsersTableSeeder extends Seeder
 
         $user_number = 19;
         $password = '1';
+        $post_per_user = 10;
 
         //---// USERS //---//
         for ($user_id = 1; $user_id <= $user_number; $user_id ++) {
@@ -90,6 +91,20 @@ class UsersTableSeeder extends Seeder
                     ]);
 
                 }
+
+            }
+
+            //---// POSTS //---//
+            for ($i = 1; $i <= $faker->numberBetween($min = 0, $max = $post_per_user); $i ++) {
+
+                DB::table('posts')->insert([
+                    'user_id'   => $user_id,
+                    'body' => $faker->paragraph($nbSentences = 1, $variableNbSentences = true),
+                    'created_at' => $faker->dateTimeThisYear($max = 'now'),
+                    'updated_at' => $faker->dateTimeThisYear($max = 'now'),
+                ]);
+
+                //---// COMMENTS //---//
 
             }
 

@@ -25,9 +25,11 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        Carbon::setLocale('pl');
+
         $user = User::findOrFail($id);
         $posts = $user->posts()->orderBy('created_at', 'desc')->get();
-        Carbon::setLocale('pl');
+
         return view('users.show', compact('user', 'posts'));
     }
     
