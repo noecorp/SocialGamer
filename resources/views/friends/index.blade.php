@@ -17,7 +17,7 @@
                                     <a href="{{ url('/users/' . $friend->id) }}">
                                         <div class="col-md-3">
                                             <img src="{{ url('user-avatar/' . $friend->id . '/300') }}" alt="" class="img-responsive">
-                                            <h5 class="text-center">{{ $friend->name }}</h5>
+                                            <p class="small text-center">{{ $friend->name }}</p>
                                         </div>
                                     </a>
                                 @endforeach

@@ -17,7 +17,7 @@
                                     <a href="{{ url('/users/' . $user->id) }}">
                                         <div class="col-md-3">
                                             <img src="{{ url('user-avatar/' . $user->id . '/300') }}" alt="" class="img-responsive">
-                                            <h5 class="text-center">{{ $user->name }}</h5>
+                                            <p class="small text-center">{{ $user->name }}</p>
                                         </div>
                                     </a>
                                 @endforeach
