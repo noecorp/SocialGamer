@@ -18,10 +18,10 @@ class CommentsController extends Controller
     {
         $comment = 'post_' . $request->post_id .'_comment_body';
         $this->validate($request, [
-            $comment => 'required|min:5',
+            $comment => 'required|min:2',
         ], [
-            'required' => 'Musisz wpisać post.',
-            'min'      => 'To pole musi mieć minimum :min znaków.',
+            'required' => 'Musisz wpisać komentarz.',
+            'min'      => 'Komentarz musi mieć minimum :min znaki.',
         ]);
 
         Comment::create([
