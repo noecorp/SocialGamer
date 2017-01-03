@@ -8,7 +8,7 @@
 
         <hr style="margin-bottom: 15px;margin-top: 15px;">
 
-        <div class="col-md-12" style="margin-bottom: 20px;">
+        <div class="col-md-12" style="margin-bottom: 15px;">
             <div class="row">
                 @if (Auth::check())
                     @include('comments.create')
@@ -18,6 +18,11 @@
 
         <div class="col-md-12">
             <div class="row">
+
+                @if(count($post->comments) > 0)
+                    <hr style="margin-bottom: 15px;margin-top: 0px;">
+                @endif
+
                 @foreach($post->comments as $comment)
                     @include('comments.show')
                 @endforeach
