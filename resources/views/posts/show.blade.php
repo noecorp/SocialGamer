@@ -8,12 +8,21 @@
 
         <hr style="margin-bottom: 15px;margin-top: 15px;">
 
-        {{--<a style="margin-top:-10px;margin-bottom:15px" href="" class="btn btn-default btn-sm">Lubię to</a>--}}
-        {{--<a style="margin-top:-10px;margin-bottom:15px" href="" class="btn btn-default btn-sm">Udostępnij</a>--}}
-        {{--<a style="margin-top:-10px;margin-bottom:15px" href="" class="btn btn-default btn-sm">Skomentuj</a>--}}
+        <div class="col-md-12" style="margin-bottom: 20px;">
+            <div class="row">
+                @if (Auth::check())
+                    @include('comments.create')
+                @endif
+            </div>
+        </div>
 
-        @if (Auth::check())
-            @include('comments.create')
-        @endif
+        <div class="col-md-12">
+            <div class="row">
+                @foreach($post->comments as $comment)
+                    @include('comments.show')
+                @endforeach
+            </div>
+        </div>
+
     </div>
 </div>
