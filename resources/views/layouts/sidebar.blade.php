@@ -40,7 +40,7 @@
                     <form class="text-center" method="POST" action="{{ url('/friends/' . $user->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button type="submit" class="btn btn-danger">Usuń ze znajomych</button>
+                        <button type="submit" class="btn btn-danger" onClick="return confirm('Czy napewno usunąć znajomego ?')">Usuń ze znajomych</button>
                     </form>
                 @endif
             @endif
