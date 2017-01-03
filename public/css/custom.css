@@ -14,3 +14,9 @@
     color            : #262626;
     background-color : #f5f5f5;
 }
+
+button.add-comment.btn.btn-info.pull-right{
+    position: absolute;
+    top: 0;
+    right: -22px;
+}
