@@ -18,7 +18,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <h4 class="text-center">Użytkownik dołączył do Social Gamer {{ $user->created_at->diffForHumans() }}</h4>
+                        <h4 class="small text-center">Użytkownik dołączył do Social Gamer <br> {{ $user->created_at->diffForHumans() }}</h4>
                     </div>
                 </div>
             </div>
