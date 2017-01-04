@@ -24,7 +24,7 @@
                 @if( ! friendship($user->id)->exists && ! friendship($user->id)->accepted)
                     <form class="text-center" method="POST" action="{{ url('/friends/' . $user->id) }}">
                         {{ csrf_field() }}
-                        <button type="submit" class="btn btn-info">Zaproś do znajomych</button>
+                        <button type="submit" class="btn btn-primary">Zaproś do znajomych</button>
                     </form>
                 @elseif(has_friend_invitation($user->id))
                         <form class="text-center" method="POST" action="{{ url('/friends/' . $user->id) }}">
@@ -34,7 +34,7 @@
                         </form>
                 @elseif(friendship($user->id)->exists && ! friendship($user->id)->accepted)
                     <p class="text-center">
-                        <button type="submit" class="btn btn-info disabled">Zaproszenie wysłane</button>
+                        <button type="submit" class="btn btn-disabled disabled">Zaproszenie wysłane</button>
                     </p>
                 @elseif(friendship($user->id)->exists && friendship($user->id)->accepted)
                     <form class="text-center" method="POST" action="{{ url('/friends/' . $user->id) }}">

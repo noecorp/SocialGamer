@@ -81,7 +81,7 @@
                                 <div class="col-sm-10 col-sm-offset-1">
                                     <div class="form-group">
                                         <p class="text-center">
-                                            <button type="submit" class="btn btn-info btn-lg">Zapisz zmiany</button>
+                                            <button type="submit" class="btn btn-primary btn-lg">Zapisz zmiany</button>
                                         </p>
                                     </div>
                                 </div>
