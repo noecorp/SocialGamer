@@ -61,18 +61,16 @@
                             <li><a href="{{ url('/register') }}">Zarejestruj</a></li>
                         @else
                             <li><a href="{{ url('/home') }}">Strona główna</a></li>
-                            <li>
-                                <a href="{{ url('/users/' . Auth::user()->id) }}">
-                                    <img style="margin-right: 5px" src="{{ url('user-avatar/' . Auth::user()->id . '/20') }}" alt="" class="img-responsive pull-left">
-                                    {{ Auth::user()->name }}
-                                </a>
-                            </li>
+
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                     <span class="caret"></span>
+                                    <img style="margin-right: 5px" src="{{ avatar(Auth::user()->id, '64') }}" width="20" alt="" class="img-responsive pull-left">
+                                    {{ Auth::user()->name }}
+                                    <i class="fa fa-caret-down" style="margin-left: 5px;"></i>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('/users/' . Auth::user()->id) }}">Twój profil</a></li>
                                     <li><a href="{{ url('/users/' . Auth::user()->id . '/edit') }}">Edytuj profil</a></li>
                                     <li><a href="{{ url('/users/' . Auth::user()->id . '/friends') }}">Lista Znajomych</a></li>
                                     <li>

@@ -2,7 +2,7 @@
         <form class="clearfix" action="{{ url('/comments') }}" method="POST">
             {{ csrf_field() }}
                 <div class="pull-left">
-                    <img src="{{ url('user-avatar/' . Auth::id() . '/36') }}" alt="" class="img-responsive">
+                    <img src="{{ avatar(Auth::user()->id, '64') }}" width="36" alt="" class="img-responsive">
                 </div>
                 <div class="col-xs-10 col-sm-11">
                     <div style="margin-bottom:0px" class="form-group{{ $errors->has('post_' . $post->id .'_comment_body') ? ' has-error' : '' }}">

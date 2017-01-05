@@ -1,6 +1,6 @@
 
 <div class="clearfix small" style="margin-top: 15px;">
-    <img src="{{ url('user-avatar/' . $comment->user->id . '/36') }}" alt="" class="img-responsive pull-left">
+    <img src="{{ avatar($post->user->id, '64') }}" width="36" alt="" class="img-responsive pull-left">
     <div class="col-xs-10 col-sm-11">
         <div class="post-info pull-left" style="margin-top: -7px;">
             <p class="small" style="margin-bottom: 0px;"><strong><a href="{{ url('/users/' . $comment->user->id) }}">{{ $comment->user->name }}</a></strong> {{ $comment->body }}</p>

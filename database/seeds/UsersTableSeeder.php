@@ -49,12 +49,10 @@ class UsersTableSeeder extends Seeder
                 switch ($gender) {
                     case 'm':
                         $name = $faker->firstNameMale . ' ' . $faker->lastNameMale;
-                        $avatar = json_decode(file_get_contents('https://randomuser.me/api/?gender=male'))->results[0]->picture->large;
                         break;
 
                     case 'f':
                         $name = $faker->firstNameFemale . ' ' . $faker->lastNameFemale;
-                        $avatar = json_decode(file_get_contents('https://randomuser.me/api/?gender=female'))->results[0]->picture->large;
                         break;
                 }
 
@@ -62,7 +60,6 @@ class UsersTableSeeder extends Seeder
                     'name'     => $name,
                     'email'    => str_replace('-', '.', str_slug($name)) . '@' . $faker->safeEmailDomain,
                     'gender'   => $gender,
-                    'avatar'   => $avatar,
                     'password' => bcrypt($password),
                     'created_at' => $faker->dateTimeThisYear($max = 'now')
                 ]);

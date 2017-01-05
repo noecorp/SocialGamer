@@ -16,7 +16,7 @@
                                 @foreach ($results_search as $user)
                                     <a href="{{ url('/users/' . $user->id) }}">
                                         <div class="col-md-3">
-                                            <img src="{{ url('user-avatar/' . $user->id . '/300') }}" alt="" class="img-responsive">
+                                            <img src="{{ avatar($user->id, '300') }}" alt="" class="img-responsive">
                                             <p class="small text-center">{{ $user->name }}</p>
                                         </div>
                                     </a>

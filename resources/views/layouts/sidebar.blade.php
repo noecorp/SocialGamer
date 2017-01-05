@@ -12,7 +12,7 @@
                    style="position:absolute;border-radius:0px;border:none;">Edytuj profil</a>
             @endif
 
-            <img src="{{ url('user-avatar/' . $user->id . '/300') }}" alt="" class="img-responsive">
+            <img src="{{ avatar($user->id, '300') }}" alt="" class="img-responsive">
 
             <br>
 

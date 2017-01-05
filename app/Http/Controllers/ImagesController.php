@@ -13,17 +13,26 @@ class ImagesController extends Controller
     {
         $user = User::findOrFail($id);
         
-        if (strpos($user->avatar, 'http') !== false) {
-            $img = Image::make($user->avatar)->fit($size)->response('jpg', 80);
-        } elseif (is_null($user->avatar) && $user->gender == 'm') {
-            $img = Image::make(asset('images/default-avatar/man.png'))->fit($size)->response('png', 80);
-        } elseif (is_null($user->avatar) && $user->gender == 'f') {
-            $img = Image::make(asset('images/default-avatar/famale.png'))->fit($size)->response('png', 80);
+//        if (strpos($user->avatar, 'http') !== false) {
+//            $img = Image::make($user->avatar)->fit($size)->response('jpg', 80);
+//        } elseif (is_null($user->avatar) && $user->gender == 'm') {
+//            $img = Image::make(asset('images/default-avatar/man.png'))->fit($size)->response('png', 80);
+//        } elseif (is_null($user->avatar) && $user->gender == 'f') {
+//            $img = Image::make(asset('images/default-avatar/famale.png'))->fit($size)->response('png', 80);
+//        } else {
+//            $avatar_path = asset('storage/users/' . $id . '/avatars/' . $user->avatar);
+//            $img = Image::make($avatar_path)->fit($size)->response('jpg', 80);
+//        }
+        if  (is_null($user->avatar)) {
+            if  ($user->gender == 'm') {
+                $img = asset('images/default-avatar/' . $size . '_man.png');
+            } elseif ($user->gender == 'f') {
+                $img = asset('images/default-avatar/' . $size . '_famale.png');
+            }
         } else {
-            $avatar_path = asset('storage/users/' . $id . '/avatars/' . $user->avatar);
-            $img = Image::make($avatar_path)->fit($size)->response('jpg', 80);
+            $img = asset('storage/users/' . $id . '/avatars/' . $size . '_' . $user->avatar);
         }
-        
+
         return $img;
         
     }
