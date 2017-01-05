@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
@@ -78,13 +80,15 @@ class UsersController extends Controller
         $avatar = $request->file('avatar');
         
         if ($avatar) {
+
             $avatar_path = 'public/users/' . $id . '/avatars';
             $upload_path = $request->file('avatar')->store($avatar_path);
-//            Image::make($avatar)->fit(300)->response('jpg', 80)->save($avatar_path . '300_');
+
             $avatar_filename = str_replace($avatar_path . '/', '', $upload_path);
             $user->avatar = $avatar_filename;
-            // open and resize an image file
-//            File::exists(storage_path('app/blogpost/' . $postId)) or File::makeDirectory(storage_path('app/blogpost/' . $postId));
+
+            File::cleanDirectory(storage_path('app/' . $avatar_path));
+
             $img = Image::make($avatar);
             $img->fit(500)->save(storage_path('app/' . $avatar_path . '/orginal_' . $avatar_filename), 90);
             $img->fit(300)->save(storage_path('app/' . $avatar_path . '/300_' . $avatar_filename), 90);
