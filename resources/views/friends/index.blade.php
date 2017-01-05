@@ -16,7 +16,7 @@
                                 @foreach ($user->friends() as $friend)
                                     <a href="{{ url('/users/' . $friend->id) }}">
                                         <div class="col-md-3">
-                                            <img src="{{ avatar($user->id, '300') }}" alt="" class="img-responsive">
+                                            <img src="{{ avatar($friend->id, '300') }}" alt="" class="img-responsive">
                                             <p class="small text-center">{{ $friend->name }}</p>
                                         </div>
                                     </a>
