@@ -90,7 +90,7 @@ class UsersController extends Controller
             File::cleanDirectory(storage_path('app/' . $avatar_path));
 
             $img = Image::make($avatar);
-            $img->fit(500)->save(storage_path('app/' . $avatar_path . '/orginal_' . $avatar_filename), 90);
+            $img->fit(600)->save(storage_path('app/' . $avatar_path . '/orginal_' . $avatar_filename), 90);
             $img->fit(300)->save(storage_path('app/' . $avatar_path . '/300_' . $avatar_filename), 90);
             $img->fit(64)->save(storage_path('app/' . $avatar_path . '/64_' . $avatar_filename), 90);
         }
