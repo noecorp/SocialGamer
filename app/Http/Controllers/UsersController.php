@@ -31,7 +31,7 @@ class UsersController extends Controller
         Carbon::setLocale('pl');
 
         $user = User::findOrFail($id);
-        $posts = $user->posts()->orderBy('created_at', 'desc')->get();
+        $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(10);
 
         return view('users.show', compact('user', 'posts'));
     }

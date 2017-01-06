@@ -11,16 +11,28 @@
                     @include('posts.create')
                 @endif
 
-
-                @foreach($posts as $post)
-                    @include('posts.show')
-                @endforeach
-
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <h4 class="small text-center">Użytkownik dołączył do Social Gamer <br> {{ $user->created_at->diffForHumans() }}</h4>
+                @if ($posts->count() === 0)
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h4 class="small text-center">Użytkownik nie posiada żadnych postów.</h4>
+                        </div>
                     </div>
+                @else
+                    @foreach($posts as $post)
+                        @include('posts.show')
+                    @endforeach
+                @endif
+
+                {{--<div class="panel panel-default">--}}
+                    {{--<div class="panel-body">--}}
+                        {{--<h4 class="small text-center">Użytkownik dołączył do Social Gamer <br> {{ $user->created_at->diffForHumans() }}</h4>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+
+                <div class="text-center">
+                    {{ $posts->links() }}
                 </div>
+
             </div>
 
         </div>
