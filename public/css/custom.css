@@ -33,6 +33,18 @@ button.add-comment.btn.btn-info.pull-right{
 }
 
 .comment {
-    font-size: 12px;
+    font-size: 14px;
     line-height: 16px;
+}
+.comment-body {
+    margin-top: 5px;
+}
+
+.comment-menu {
+    opacity: 0;
+    font-size: 12px;
+}
+
+.comment:hover .comment-menu {
+    opacity: 1;
 }
