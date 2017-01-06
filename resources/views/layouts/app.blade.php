@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Social Gamer App</title>
+    <title>Social Gamer</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <i class="fa fa-gamepad"></i> Social Gamer App
+                        <i class="fa fa-gamepad"></i> Social Gamer
                         {{--{{ config('app.name', 'Social Gamer App') }}--}}
                     </a>
                 </div>
