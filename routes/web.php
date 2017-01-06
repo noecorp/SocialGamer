@@ -17,7 +17,7 @@ Route::get('/', 'WallController@index');
 Auth::routes();
 
 //Login page
-//Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 //Search Users
 Route::get('/search', 'SearchUsersController@users');

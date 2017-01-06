@@ -45,6 +45,6 @@ button.add-comment.btn.btn-info.pull-right{
     font-size: 12px;
 }
 
-.comment:hover .comment-menu {
+.comment:hover .comment-menu, .comment:active .comment-menu {
     opacity: 1;
 }
