@@ -41,7 +41,8 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        return view('comments.edit', compact('comment'));
     }
 
     /**
@@ -53,7 +54,18 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'comment_body' => 'required|min:2',
+        ], [
+            'required' => 'Musisz wpisać komentarz.',
+            'min'      => 'Komentarz musi mieć minimum :min znaki.',
+        ]);
+
+        Comment::findOrFail($id)->update([
+            'body'    => $request->comment_body,
+        ]);
+
+        return back();
     }
 
     /**
