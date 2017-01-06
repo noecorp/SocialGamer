@@ -12,9 +12,7 @@
 */
 
 //Homepage
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WallController@index');
 
 Auth::routes();
 
@@ -41,6 +39,3 @@ Route::resource('/posts', 'PostsController', ['except' => ['index', 'create']]);
 
 //Comments
 Route::resource('/comments', 'CommentsController', ['except' => ['index', 'create', 'show']]);
-
-//Wall
-Route::get('/home', 'WallController@index');
