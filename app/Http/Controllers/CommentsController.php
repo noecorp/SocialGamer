@@ -64,6 +64,8 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Comment::where(['id' => $id])->delete();
+
+        return back();
     }
 }
