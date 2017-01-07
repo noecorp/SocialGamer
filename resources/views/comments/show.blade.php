@@ -4,7 +4,7 @@
     <div class="col-xs-10 col-sm-11 comment-body">
         <div class="post-info pull-left" style="margin-top: -7px;">
             <p class="small" style="margin-bottom: 0px;"><strong><a href="{{ url('/users/' . $comment->user->id) }}">{{ $comment->user->name }}</a></strong> {{ $comment->body }}</p>
-            <p class="small" style="margin-bottom: 0px;margin-top: -5px;"><span style="margin-right: 5px" class="fa fa-clock-o"></span><a href="">{{ $comment->created_at->diffForHumans() }}</a></p>
+            <p class="small" style="margin-bottom: 0px;margin-top: -5px;"><span style="margin-right: 5px" class="fa fa-clock-o"></span>{{ $comment->created_at->diffForHumans() }}</p>
         </div>
     </div>
 
@@ -14,7 +14,6 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="fa fa-lg fa-angle-down"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url('/comments/' . $comment->id . '/edit') }}">Edytuj</a></li>
-                    {{--<li><a href="{{ url('/posts/' . $comment->id . '/edit') }}">Usuń</a></li>--}}
                     <li>
                         <form method="POST" action="{{ url('/comments/' . $comment->id) }}">
                             {{ csrf_field() }}

@@ -6,11 +6,12 @@
         </div>
         <p class="">{{ $post->body }}</p>
 
-        <hr style="margin-bottom: 15px;margin-top: 15px;">
+
 
         <div class="col-md-12" style="margin-bottom: 15px;">
             <div class="row">
                 @if (Auth::check())
+                    <hr style="margin-bottom: 15px;margin-top: 15px;">
                     @include('comments.create')
                 @endif
             </div>
