@@ -53,14 +53,14 @@
             Informacje
         </div>
 
-        <div class="panel-body">
+        <div class="panel-body text-center">
 
-            <p>Adres email: {{ $user->email }}</p>
-            <p>Płeć:
+            {{--<p>Adres email: {{ $user->email }}</p>--}}
+            <p class="btn btn-default" style="cursor: auto">Płeć:
                 @if ($user->gender == 'm')
-               Mężczyzna
+                 Mężczyzna <i class="fa fa-mars"></i>
                 @else
-               Kobieta
+                 Kobieta <i class="fa fa-venus"></i>
                 @endif
             </p>
 
