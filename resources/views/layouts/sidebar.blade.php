@@ -55,12 +55,12 @@
 
         <div class="panel-body">
 
-            {{--<p>Adres email: {{ $user->email }}</p>--}}
+            <p>Adres email: {{ $user->email }}</p>
             <p>Płeć:
                 @if ($user->gender == 'm')
-                 Mężczyzna <i class="fa fa-mars"></i>
+               Mężczyzna
                 @else
-                 Kobieta <i class="fa fa-venus"></i>
+               Kobieta
                 @endif
             </p>
 
