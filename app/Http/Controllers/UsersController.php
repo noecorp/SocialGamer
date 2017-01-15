@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
@@ -28,12 +28,14 @@ class UsersController extends Controller
      */
     public function show($id)
     {
+        setlocale(LC_TIME, 'pl_PL.UTF-8');
         Carbon::setLocale('pl');
 
         $user = User::findOrFail($id);
+        $info = $user->profile;
         $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('users.show', compact('user', 'posts'));
+        return view('users.show', compact('user', 'posts', 'info'));
     }
     
     /**
@@ -45,8 +47,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = Auth::user();
+        $info = $user->profile;
         
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user', 'info'));
     }
     
     /**
@@ -65,6 +68,9 @@ class UsersController extends Controller
                 'email',
                 Rule::unique('users')->ignore($id),
             ],
+            'location' => 'min:5',
+            'platform' => 'min:2',
+            'about'    => 'max:255',
         ], [
             'required' => 'Pole :attribute jest wymagane',
             'email'    => 'Wprowadź poprawny adres email',
@@ -94,10 +100,18 @@ class UsersController extends Controller
             $img->fit(300)->save(storage_path('app/' . $avatar_path . '/300_' . $avatar_filename), 90);
             $img->fit(64)->save(storage_path('app/' . $avatar_path . '/64_' . $avatar_filename), 90);
         }
-        
+
         $user->save();
-        
-        return back();
+
+        Auth::user()->profile()->update([
+            'location' => $request->location,
+            'platform' => $request->platform,
+            'about'    => $request->about,
+        ]);
+
+        Session::flash('success', 'Profile updated.');
+
+        return redirect()->back();
     }
     
     /**

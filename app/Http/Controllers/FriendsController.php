@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Friend;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FriendsController extends Controller
@@ -19,7 +18,9 @@ class FriendsController extends Controller
     {
         $user = User::findOrFail($user_id);
 
-        return view('friends.index', compact('user'));
+        $friends = $user->friends();
+
+        return view('friends.index', compact('user', 'friends'));
     }
 
 

@@ -67,6 +67,54 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                                        <label for="">Miejsce zamieszkania</label>
+                                        <input type="text" class="form-control" value="{{ $info->location }}" name="location">
+                                        @if ($errors->has('location'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('location') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="form-group{{ $errors->has('platform') ? ' has-error' : '' }}">
+                                        <label for="">Platforma</label>
+                                        {{--<input type="text" class="form-control" value="{{ $info->platform }}" name="platform">--}}
+                                        <select id="platform" type="text" class="form-control" name="platform">
+                                            <option value="" default></option>
+                                            <option value="PS4" @if ($info->platform == 'PS4') selected @endif>PS4</option>
+                                            <option value="PC" @if ($info->platform == 'PC') selected @endif>PC</option>
+                                            <option value="XBOX" @if ($info->platform == 'XBOX') selected @endif>XBOX</option>
+                                        </select>
+                                        @if ($errors->has('platform'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('platform') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="form-group{{ $errors->has('about') ? ' has-error' : '' }}">
+                                        <label for="">Opis</label>
+                                        <textarea type="text" class="form-control"name="about" id="about" rows="2">{{ $info->about }}</textarea>
+                                        @if ($errors->has('about'))
+                                            <span class="help-block">
+                                                <strong>{{ $errors->first('about') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
     
                             {{--<div class="row">--}}
                                 {{--<div class="col-sm-10 col-sm-offset-1">--}}

@@ -38,27 +38,29 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param Exception $exception
      * @return \Illuminate\Http\Response
+     * @internal param Exception $e
+     * @internal param Exception $exception
      */
 //    public function render($request, Exception $exception)
 //    {
 //        return parent::render($request, $exception);
 //    }
 
-    public function render($request, Exception $e)
+    public function render($request, Exception $exception)
     {
-        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+        if ($exception instanceof TokenMismatchException) {
 
             return redirect()
                 ->back()
                 ->withInput($request->except('_token'))
-                ->withMessage('Your explanation message depending on how much you want to dumb it down, lol! ');
+                ->withMessage('Twoja sesja wygasła, zaloguj ponownie.');
 
         }
 
-        return parent::render($request, $e);
+        return parent::render($request, $exception);
     }
 
     /**

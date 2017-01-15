@@ -19,6 +19,8 @@ class WallController extends Controller
 
     public function index()
     {
+        setlocale(LC_TIME, 'pl_PL.UTF-8');
+
         Carbon::setLocale('pl');
 
         $friends = Auth::user()->friends();

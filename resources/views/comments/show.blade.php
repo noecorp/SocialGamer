@@ -4,7 +4,15 @@
     <div class="col-xs-10 col-sm-11 comment-body">
         <div class="post-info pull-left" style="margin-top: -7px;">
             <p class="small" style="margin-bottom: 0px;"><strong><a href="{{ url('/users/' . $comment->user->id) }}">{{ $comment->user->name }}</a></strong> {{ $comment->body }}</p>
-            <p class="small" style="margin-bottom: 0px;margin-top: -5px;"><span style="margin-right: 5px" class="fa fa-clock-o"></span>{{ $comment->created_at->diffForHumans() }}</p>
+            @if( ($comment->created_at->diffInDays(Carbon\Carbon::now()->setLocale('pl')) < 1))
+                <p class="small" style="margin-bottom: 0px;margin-top: -5px;"><span style="margin-right: 5px" class="fa fa-clock-o"></span>{{ $comment->created_at->diffForHumans() }}</p>
+            @else
+                @if($comment->created_at->format('Y') == Carbon\Carbon::now()->format('Y'))
+                    <p class="small" style="margin-bottom: 0px;margin-top: -5px;"><span style="margin-right: 5px" class="fa fa-clock-o"></span>{{ $comment->created_at->formatLocalized('%d %B') }} o {{ $comment->created_at->format('H:m') }}</p>
+                @else
+                    <p class="small" style="margin-bottom: 0px;margin-top: -5px;"><span style="margin-right: 5px" class="fa fa-clock-o"></span>{{ $comment->created_at->formatLocalized('%d %B %Y') }} o {{ $comment->created_at->format('H:m') }}</p>
+                @endif
+            @endif
         </div>
     </div>
 

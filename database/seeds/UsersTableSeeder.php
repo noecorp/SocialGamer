@@ -17,30 +17,36 @@ class UsersTableSeeder extends Seeder
 
         //---// VARIABLES //---//
 
-        $user_number = 19;
+        $user_number = 100;
         $password = '1';
-        $post_per_user = 10;
+        $post_per_user = 100;
 
         //---// USERS //---//
         for ($user_id = 1; $user_id <= $user_number; $user_id ++) {
 
             if ($user_id === 1) {
                 DB::table('users')->insert([
-                    'name'     => 'Rafał Kucharski',
-                    'email'    => 'kuchar.rafal@gmail.com',
-                    'gender'   => 'm',
-                    'avatar'   => '7dbb528762465f5e7efa095b3497225e.jpeg',
-                    'password' => bcrypt($password),
+                    'name'       => 'Rafał Kucharski',
+                    'email'      => 'kuchar.rafal@gmail.com',
+                    'gender'     => 'm',
+                    'avatar'     => '7dbb528762465f5e7efa095b3497225e.jpeg',
+                    'password'   => bcrypt($password),
                     'created_at' => $faker->dateTimeThisYear($max = 'now')
                 ]);
-
+                DB::table('profiles')->insert([
+                    'user_id' => $user_id,
+                ]);
+            } elseif ($user_id === 2) {
                 DB::table('users')->insert([
                     'name'     => 'Monika Balwin',
                     'email'    => 'monika.balwin@vp.pl',
                     'gender'   => 'f',
-                    'avatar'   => '36b2f5ca723acb00d65f186ef8d93c55.jpeg',
+                    'avatar'   => '86b41a2826a035887c2079fdad49598e.jpeg',
                     'password' => bcrypt($password),
                     'created_at' => $faker->dateTimeThisYear($max = 'now')
+                ]);
+                DB::table('profiles')->insert([
+                    'user_id' => $user_id,
                 ]);
             } else {
 
@@ -62,6 +68,10 @@ class UsersTableSeeder extends Seeder
                     'gender'   => $gender,
                     'password' => bcrypt($password),
                     'created_at' => $faker->dateTimeThisYear($max = 'now')
+                ]);
+
+                DB::table('profiles')->insert([
+                    'user_id' => $user_id,
                 ]);
 
             }

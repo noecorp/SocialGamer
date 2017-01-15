@@ -54,7 +54,8 @@
         </div>
 
         <div class="panel-body text-center">
-
+            <p class="btn btn-default" style="cursor: auto">Platforma: {{ $info->platform }}</p>
+            <br><br>
             {{--<p>Adres email: {{ $user->email }}</p>--}}
             <p class="btn btn-default" style="cursor: auto">Płeć:
                 @if ($user->gender == 'm')
@@ -63,7 +64,8 @@
                  Kobieta <i class="fa fa-venus"></i>
                 @endif
             </p>
-
+            <br><br>
+            <p class="text-justify">{{ $info->about }}</p>
         </div>
     </div>
 </div>

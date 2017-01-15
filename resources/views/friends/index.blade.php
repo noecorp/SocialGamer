@@ -6,14 +6,14 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        Lista znajomych <span class="label label-info">{{ $user->friends()->count() }}</span>
+                        Lista znajomych <span class="label label-info">{{ $friends->count() }}</span>
                     </div>
                     <div class="panel-body">
-                        @if ($user->friends()->count() === 0)
+                        @if ($friends->count() === 0)
                             <h4 class="text-center">Brak znajomych.</h4>
                         @else
                             <div class="row">
-                                @foreach ($user->friends() as $friend)
+                                @foreach ($friends as $friend)
                                     <a href="{{ url('/users/' . $friend->id) }}">
                                         <div class="col-md-3">
                                             <img src="{{ avatar($friend->id, '300') }}" alt="" class="img-responsive">
@@ -23,7 +23,7 @@
                                 @endforeach
                             </div>
                             <div class="text-center">
-
+                                {{--{{ $friends->links() }}--}}
                             </div>
                         @endif
                     </div>
