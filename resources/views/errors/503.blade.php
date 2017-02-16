@@ -41,6 +41,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">Strona tymczasowo niedostępna.</div>
+                <h2>Za utrudnienia przepraszamy.</h2>
             </div>
         </div>
     </body>

@@ -41,6 +41,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">Brak Dostępu!</div>
+                <h2><a style="text-decoration:none;color:#B0BEC5;" href="/">Wróć do strony głównej.</a></h2>
             </div>
         </div>
     </body>

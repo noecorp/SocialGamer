@@ -169,6 +169,7 @@ return [
     
         Intervention\Image\ImageServiceProvider::class,
         'App\Providers\HelperServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
 
         /*
          * Application Service Providers...
@@ -228,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Image' => Intervention\Image\Facades\Image::class,
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
     ],
 
