@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
@@ -33,7 +34,11 @@ class UsersController extends Controller
 
         $user = User::findOrFail($id);
         $info = $user->profile;
-        $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(10);
+
+        $posts = Post::with('comments.user')
+            ->where('user_id', $id)
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
 
         return view('users.show', compact('user', 'posts', 'info'));
     }
