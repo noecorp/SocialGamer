@@ -6,6 +6,7 @@
         </div>
         <p class="">{{ $post->body }}</p>
 
+        @include('posts.include.likes')
 
 
         <div class="col-md-12" style="margin-bottom: 15px;">

@@ -39,3 +39,6 @@ Route::resource('/posts', 'PostsController', ['except' => ['index', 'create']]);
 
 //Comments
 Route::resource('/comments', 'CommentsController', ['except' => ['index', 'create', 'show']]);
+
+Route::post('/likes', 'LikesController@add');
+Route::delete('/likes', 'LikesController@destroy');
