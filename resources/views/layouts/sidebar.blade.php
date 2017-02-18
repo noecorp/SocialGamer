@@ -7,7 +7,7 @@
 
         <div class="panel-body">
 
-            @if ($user->id === Auth::id())
+            @if (belongsToUser($user->id) || isAdmin())
                 <a href="{{ url('/users/' . $user->id . '/edit') }}" class="btn btn-default btn-sm"
                    style="position:absolute;border-radius:0px;border:none;">Edytuj profil</a>
             @endif

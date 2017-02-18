@@ -47,7 +47,12 @@ class PostsController extends Controller
     {
         Carbon::setLocale('pl');
 
-        $post = Post::findOrFail($id);
+        if (isAdmin()) {
+            $post = Post::findOrFail($id)->withTrashed();
+        } else {
+            $post = Post::findOrFail($id);
+        }
+
         return view('posts.single', compact('post'));
     }
 
@@ -59,7 +64,11 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        if (isAdmin()) {
+            $post = Post::findOrFail($id)->withTrashed();
+        } else {
+            $post = Post::findOrFail($id);
+        }
         return view('posts.edit', compact('post'));
     }
 
@@ -94,7 +103,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        Post::where(['id' => $id])->delete();
+        $post = Post::findOrFail($id);
+        $post->delete();
+        $post->comments()->delete();
 
         return back();
     }

@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Edycja profilu użytkownika</div>
 
-                    <img src="{{ avatar(Auth::user()->id, 'orginal') }}" alt="" class="img-responsive">
+                    <img src="{{ avatar($user->id, 'orginal') }}" alt="" class="img-responsive">
                     
                     <div class="panel-body">
                         <form action="{{ url('/users/' . $user->id) }}" method="POST" enctype="multipart/form-data">

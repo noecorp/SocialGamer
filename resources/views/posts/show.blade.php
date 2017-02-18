@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default {{ $post->trashed() ? 'trashed' : "" }} ">
     <div class="panel-body">
         <div class="clearfix">
             @include('posts.include.post-info')

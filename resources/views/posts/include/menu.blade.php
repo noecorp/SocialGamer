@@ -1,6 +1,6 @@
 <div class="pull-right">
     <div class="dropdown">
-        @if ($post->user->id === Auth::id())
+        @if (belongsToUser($post->user->id) || isAdmin())
             <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="fa fa-lg fa-angle-down"></span></a>
             <ul class="dropdown-menu">
                 <li><a href="{{ url('/posts/' . $post->id . '/edit') }}">Edytuj</a></li>

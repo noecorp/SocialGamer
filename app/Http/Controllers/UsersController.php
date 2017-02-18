@@ -35,10 +35,21 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $info = $user->profile;
 
-        $posts = Post::with('comments.user')
-            ->where('user_id', $id)
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
+        if (isAdmin()) {
+            $posts = Post::with('comments.user')
+                ->where('user_id', $id)
+                ->orderBy('created_at', 'desc')
+                ->withTrashed()
+                ->paginate(10);
+        } else {
+            $posts = Post::with('comments.user')
+                ->where('user_id', $id)
+                ->orderBy('created_at', 'desc')
+                ->paginate(10);
+        }
+
+
+
 
         return view('users.show', compact('user', 'posts', 'info'));
     }
@@ -51,7 +62,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user();
+        $user = User::findOrFail($id);
         $info = $user->profile;
         
         return view('users.edit', compact('user', 'info'));

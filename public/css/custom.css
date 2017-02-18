@@ -48,3 +48,11 @@ button.add-comment.btn.btn-info.pull-right{
 .comment:hover .comment-menu, .comment:active .comment-menu {
     opacity: 1;
 }
+
+.trashed {
+    opacity: .3;
+    transition: ease-in-out .5s;
+}
+.trashed:hover {
+    opacity: 1;
+}

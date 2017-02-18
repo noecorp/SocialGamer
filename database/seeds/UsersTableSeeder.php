@@ -22,6 +22,15 @@ class UsersTableSeeder extends Seeder
         $post_per_user = 100;
         $comments_per_post = 20;
 
+        DB::table('roles')->insert([
+            'id'       => 1,
+            'type'      => 'admin',
+        ]);
+        DB::table('roles')->insert([
+            'id'       => 2,
+            'type'      => 'user',
+        ]);
+
         //---// USERS //---//
         for ($user_id = 1; $user_id <= $user_number; $user_id ++) {
             $date = $faker->dateTimeThisYear($max = 'now');
@@ -31,6 +40,7 @@ class UsersTableSeeder extends Seeder
                     'email'      => 'kuchar.rafal@gmail.com',
                     'gender'     => 'm',
                     'avatar'     => '7dbb528762465f5e7efa095b3497225e.jpeg',
+                    'role_id'   => 1,
                     'password'   => bcrypt($password),
                     'created_at' => $date
                 ]);
@@ -43,6 +53,7 @@ class UsersTableSeeder extends Seeder
                     'email'    => 'monika.balwin@vp.pl',
                     'gender'   => 'f',
                     'avatar'   => '86b41a2826a035887c2079fdad49598e.jpeg',
+                    'role_id'   => 2,
                     'password' => bcrypt($password),
                     'created_at' => $date
                 ]);
@@ -67,6 +78,7 @@ class UsersTableSeeder extends Seeder
                     'name'     => $name,
                     'email'    => str_replace('-', '.', str_slug($name)) . '@' . $faker->safeEmailDomain,
                     'gender'   => $gender,
+                    'role_id'   => 2,
                     'password' => bcrypt($password),
                     'created_at' => $date
                 ]);

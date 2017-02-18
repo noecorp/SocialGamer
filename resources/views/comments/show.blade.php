@@ -1,5 +1,5 @@
 
-<div class="clearfix comment" style="margin-top: 15px;">
+<div class="clearfix comment {{ $comment->trashed() ? 'trashed' : "" }}" style="margin-top: 15px;">
     <img src="{{ avatar($comment->user->id, '64') }}" width="36" alt="" class="img-responsive pull-left">
     <div class="col-xs-10 col-sm-11 comment-body">
         <div class="post-info pull-left" style="margin-top: -7px;">
@@ -18,7 +18,7 @@
 
     <div class="pull-right">
         <div class="dropdown comment-menu">
-            @if ($comment->user->id === Auth::id())
+            @if (belongsToUser($comment->user->id) || isAdmin())
                 <a class="dropdown-toggle" data-toggle="dropdown" href=""><span class="fa fa-lg fa-angle-down"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url('/comments/' . $comment->id . '/edit') }}">Edytuj</a></li>
