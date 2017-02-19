@@ -78,6 +78,7 @@ button.add-comment.btn.btn-info.pull-right{
 }
 .btn li {
     list-style: none;
+    text-align: left;
 }
 .list-group .btn:hover, .list-group .btn:focus {
     color: #636b6f;

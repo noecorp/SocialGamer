@@ -67,7 +67,7 @@
                                     {{ strtok(Auth::user()->name, ' ') }}
                                 </a>
                             </li>
-                            <li><a class="icon" href="{{ url('/notifications/') }}"><i class="fa fa-envelope"></i> <span class="label label-default">12</span></a></li>
+                            <li><a class="icon" href="{{ url('/notifications/') }}"><i class="fa fa-envelope"></i> <span class="label label-default">6</span></a></li>
                             <li><a class="icon" href="{{ url('/notifications/') }}"><i class="fa fa-globe"></i> <span class="label label-default">{{ Auth::user()->unreadNotifications->count() > 0 ? Auth::user()->unreadNotifications->count() : ''  }}</span></a></li>
 
                             <li class="dropdown">

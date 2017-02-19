@@ -15,9 +15,9 @@
         </form>
     @endif
 
-@foreach($post->likes as $like)
-    {{ $like->user->name }}
-@endforeach
+{{--@foreach($post->likes as $like)--}}
+    {{--{{ $like->user->name }}--}}
+{{--@endforeach--}}
 
 @else
 

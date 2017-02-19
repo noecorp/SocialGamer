@@ -42,9 +42,11 @@ class FriendRequest extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('Zaproszenie do znajomych')
-                    ->action('Notification Action', 'https://laravel.com')
-                    ->line('Thank you for using our application!');
+                    ->subject('Social gamer: Zaproszenie do znajomych')
+                    ->greeting('Witaj!')
+                    ->line('Masz nowe aproszenie do znajomych od '.Auth::user()->name)
+                    ->action('Zobacz profil użytkownika', $_ENV['APP_URL'].'/users/'.Auth::id())
+                    ->line('Dziękuję za korzystanie z mojej aplikacji!');
     }
 
     /**
