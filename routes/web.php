@@ -40,5 +40,11 @@ Route::resource('/posts', 'PostsController', ['except' => ['index', 'create']]);
 //Comments
 Route::resource('/comments', 'CommentsController', ['except' => ['index', 'create', 'show']]);
 
+//Likes
 Route::post('/likes', 'LikesController@add');
 Route::delete('/likes', 'LikesController@destroy');
+
+//Notifications
+Route::get('/notifications', 'NotificationsController@index');
+Route::get('/notifications/read', 'NotificationsController@readAll');
+Route::patch('/notifications/{read}', 'NotificationsController@readOne');

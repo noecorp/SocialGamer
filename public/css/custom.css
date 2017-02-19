@@ -56,3 +56,29 @@ button.add-comment.btn.btn-info.pull-right{
 .trashed:hover {
     opacity: 1;
 }
+
+.navbar-nav>li>a {
+    font-size: 14px;
+    padding:15px 10px;
+}
+
+.navbar-nav>li>a.icon{
+    padding:15px 5px;
+}
+.icon span.label.label-default {
+    font-size: 9px;
+    background: red;
+    position: absolute;
+    top: 15px;
+    right: 0;
+    padding: 2px;
+}
+.btn-notify {
+    background-color: transparent;
+}
+.btn li {
+    list-style: none;
+}
+.list-group .btn:hover, .list-group .btn:focus {
+    color: #636b6f;
+}

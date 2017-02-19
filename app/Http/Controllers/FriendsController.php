@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Friend;
+use App\Notifications\FriendRequest;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +39,9 @@ class FriendsController extends Controller
                 'user_id'   => Auth::id(),
                 'friend_id' => $friend_id,
             ]);
+
+            User::findOrFail($friend_id)->notify(new FriendRequest());
+
         } else {
             $this->accept($friend_id);
         }

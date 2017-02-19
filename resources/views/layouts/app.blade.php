@@ -61,16 +61,25 @@
                             <li><a href="{{ url('/register') }}">Zarejestruj</a></li>
                         @else
                             <li><a href="{{ url('/') }}">Strona główna</a></li>
+                            <li>
+                                <a class="icon" style="margin-right: 15px;" href="{{ url('/users/' . Auth::user()->id) }}">
+                                    <img style="margin-right: 5px" src="{{ avatar(Auth::user()->id, '64') }}" width="20" alt="" class="img-responsive pull-left">
+                                    {{ strtok(Auth::user()->name, ' ') }}
+                                </a>
+                            </li>
+                            <li><a class="icon" href="{{ url('/notifications/') }}"><i class="fa fa-envelope"></i> <span class="label label-default">12</span></a></li>
+                            <li><a class="icon" href="{{ url('/notifications/') }}"><i class="fa fa-globe"></i> <span class="label label-default">{{ Auth::user()->unreadNotifications->count() > 0 ? Auth::user()->unreadNotifications->count() : ''  }}</span></a></li>
 
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <img style="margin-right: 5px" src="{{ avatar(Auth::user()->id, '64') }}" width="20" alt="" class="img-responsive pull-left">
-                                    {{ Auth::user()->name }}
-                                    <i class="fa fa-caret-down" style="margin-left: 5px;"></i>
+                                <a class="icon" style="margin-left: 5px;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{--<img style="margin-right: 5px" src="{{ avatar(Auth::user()->id, '64') }}" width="20" alt="" class="img-responsive pull-left">--}}
+                                    {{--{{ strtok(Auth::user()->name, ' ') }}--}}
+                                    <i class="fa fa-ellipsis-v"></i>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/users/' . Auth::user()->id) }}">Twój profil</a></li>
+                                    <li><a href="{{ url('/notifications/') }}">Powiadomienia <span class="label label-default">{{ Auth::user()->unreadNotifications->count() }}</span></a></li>
                                     <li><a href="{{ url('/users/' . Auth::user()->id . '/edit') }}">Edytuj profil</a></li>
                                     <li><a href="{{ url('/users/' . Auth::user()->id . '/friends') }}">Lista Znajomych</a></li>
                                     <li>

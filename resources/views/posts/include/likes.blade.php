@@ -15,6 +15,10 @@
         </form>
     @endif
 
+@foreach($post->likes as $like)
+    {{ $like->user_id }}
+@endforeach
+
 @else
 
     <button class="btn btn-default btn-xs"><i class="fa fa-thumbs-up"></i> Zalajkuj {{ $post->likes()->count() }}</button>
