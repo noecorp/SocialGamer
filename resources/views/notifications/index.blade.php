@@ -9,6 +9,7 @@
                         Powiadomienia
                         <div class="pull-right {{ Auth::user()->notifications->count() === 0 ? 'hidden' : '' }}">
                             <a class="btn btn-xs btn-primary {{ Auth::user()->unreadNotifications->count() > 0 ? '' : 'disabled' }}" href="{{ url('/notifications/read') }}">Oznacz wszystkie jako przeczytane</a>
+                            <a class="btn btn-xs btn-primary {{ Auth::user()->Notifications->count() > 0 ? '' : 'disabled' }}" href="{{ url('/notifications/del') }}">Wyczyść powiadomienia</a>
                         </div>
                     </div>
                     <div class="panel-body">

@@ -33,4 +33,13 @@ class NotificationsController extends Controller
         Auth::user()->notifications->markAsRead();
         return back();
     }
+
+    public function removeAll()
+    {
+        DatabaseNotification::where([
+            'notifiable_id' => Auth::id()
+        ])->delete();
+
+        return back();
+    }
 }

@@ -48,3 +48,4 @@ Route::delete('/likes', 'LikesController@destroy');
 Route::get('/notifications', 'NotificationsController@index');
 Route::get('/notifications/read', 'NotificationsController@readAll');
 Route::patch('/notifications/{read}', 'NotificationsController@readOne');
+Route::get('/notifications/del', 'NotificationsController@removeAll');
