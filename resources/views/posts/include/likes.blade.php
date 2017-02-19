@@ -16,7 +16,7 @@
     @endif
 
 @foreach($post->likes as $like)
-    {{ $like->user_id }}
+    {{ $like->user->name }}
 @endforeach
 
 @else
