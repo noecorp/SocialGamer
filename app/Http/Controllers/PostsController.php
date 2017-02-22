@@ -64,11 +64,7 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        if (isAdmin()) {
-            $post = Post::findOrFail($id)->withTrashed();
-        } else {
-            $post = Post::findOrFail($id);
-        }
+        $post = Post::findOrFail($id);
         return view('posts.edit', compact('post'));
     }
 
