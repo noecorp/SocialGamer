@@ -67,8 +67,42 @@
                                     {{ strtok(Auth::user()->name, ' ') }}
                                 </a>
                             </li>
-                            <li><a class="icon" href="{{ url('/notifications/') }}"><i class="fa fa-envelope"></i> <span class="label label-default">6</span></a></li>
-                            <li><a class="icon" href="{{ url('/notifications/') }}"><i class="fa fa-globe"></i> <span class="label label-default">{{ Auth::user()->unreadNotifications->count() > 0 ? Auth::user()->unreadNotifications->count() : ''  }}</span></a></li>
+
+                            <li class="dropdown">
+                                <a class="icon dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#"><i class="fa fa-envelope"></i> <span class="label label-default">6</span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a class="icon" href="{{ url('/notifications/') }}">Zobacz wszystkie</a></li>
+                                </ul>
+
+                            </li>
+
+
+                            <li class="dropdown">
+                                <a class="icon dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" href="#"><i class="fa fa-globe"></i> <span class="label label-default">{{ Auth::user()->unreadNotifications->count() > 0 ? Auth::user()->unreadNotifications->count() : ''  }}</span></a>
+                                <ul class="dropdown-menu" role="menu">
+
+                                    @foreach (Auth::user()->notifications as $notifications)
+                                            @if(!$notifications->read_at)
+                                                    <a  href="{{ url('/users/'.$notifications->data['from_user_id']) }}" class="btn btn-xs btn-notify" style="width: 100%">
+                                                        <li class="list-group-item-info list-group-item">
+                                                            {{ $notifications->data['message'] }}
+                                                        </li>
+                                                    </a>
+                                            @else
+                                                <a  href="{{ url('/users/'.$notifications->data['from_user_id']) }}" class="btn btn-xs btn-notify" style="width: 100%">
+                                                    <li class="list-group-item list-group-item">
+                                                        {{ $notifications->data['message'] }}
+                                                    </li>
+                                                </a>
+                                            @endif
+                                    @endforeach
+                                        <hr style="opacity: .2;margin:10px;">
+                                    <li><a class="icon text-center" href="{{ url('/notifications/') }}">{{ Auth::user()->unreadNotifications->count() > 0 ? 'Zobacz wszystkie' : 'Brak powiadomnień' }}</a></li>
+                                    <li><a class="text-center {{ Auth::user()->unreadNotifications->count() > 0 ? '' : 'hidden' }}" href="{{ url('/notifications/read') }}">Oznacz wszystkie jako przeczytane</a></li>
+                                    <li><a class="text-center {{ Auth::user()->Notifications->count() > 0 ? '' : 'hidden' }}" href="{{ url('/notifications/del') }}">Wyczyść powiadomienia</a></li>
+                                </ul>
+
+                            </li>
 
                             <li class="dropdown">
                                 <a class="icon" style="margin-left: 5px;" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

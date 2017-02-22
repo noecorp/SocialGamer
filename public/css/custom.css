@@ -83,3 +83,9 @@ button.add-comment.btn.btn-info.pull-right{
 .list-group .btn:hover, .list-group .btn:focus {
     color: #636b6f;
 }
+.dropdown-menu .btn:hover, .dropdown-menu .btn:focus {
+    color: #636b6f;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+    background-color: transparent;
+}
