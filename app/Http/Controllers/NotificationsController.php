@@ -1,45 +1,46 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Notifications\DatabaseNotification;
-use Illuminate\Support\Facades\Auth;
+    use Illuminate\Http\Request;
+    use Illuminate\Notifications\DatabaseNotification;
+    use Illuminate\Support\Facades\Auth;
 
-class NotificationsController extends Controller
-{
-    public function __construct()
+    class NotificationsController extends Controller
     {
-        $this->middleware('auth');
+        public function __construct()
+        {
+            $this->middleware('auth');
+        }
+
+        public function index()
+        {
+            return view('notifications.index');
+        }
+
+        public function readOne($id)
+        {
+            DatabaseNotification::where([
+                'id'            => $id,
+                'notifiable_id' => Auth::id(),
+            ])->firstOrFail()->markAsRead();
+
+            return back();
+        }
+
+        public function readAll()
+        {
+            Auth::user()->notifications->markAsRead();
+
+            return back();
+        }
+
+        public function removeAll()
+        {
+            DatabaseNotification::where([
+                'notifiable_id' => Auth::id(),
+            ])->delete();
+
+            return back();
+        }
     }
-
-    public function index()
-    {
-        return view('notifications.index');
-    }
-
-    public function readOne($id)
-    {
-        DatabaseNotification::where([
-            'id' => $id,
-            'notifiable_id' => Auth::id(),
-        ])->firstOrFail()->markAsRead();
-
-        return back();
-    }
-
-    public function readAll()
-    {
-        Auth::user()->notifications->markAsRead();
-        return back();
-    }
-
-    public function removeAll()
-    {
-        DatabaseNotification::where([
-            'notifiable_id' => Auth::id()
-        ])->delete();
-
-        return back();
-    }
-}

@@ -1,17 +1,20 @@
 <?php
 
-namespace App;
+    namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
-{
-    protected $fillable = [
-        'user_id', 'about', 'platform', 'location'
-    ];
-
-    public function user()
+    class Profile extends Model
     {
-        return $this->belongsTo('App\User');
+        protected $fillable = [
+            'user_id',
+            'about',
+            'platform',
+            'location',
+        ];
+
+        public function user()
+        {
+            return $this->belongsTo('App\User');
+        }
     }
-}

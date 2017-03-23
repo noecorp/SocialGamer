@@ -1,27 +1,29 @@
 <?php
 
-namespace App;
+    namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+    use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Comment extends Model
-{
-    use SoftDeletes;
-
-    protected $dates = ['deleted_at'];
-
-    protected $fillable = [
-        'post_id', 'user_id', 'body',
-    ];
-
-    public function user()
+    class Comment extends Model
     {
-        return $this->belongsTo('App\User');
-    }
+        use SoftDeletes;
 
-    public function likes()
-    {
-        return $this->hasMany('App\Like');
+        protected $dates = ['deleted_at'];
+
+        protected $fillable = [
+            'post_id',
+            'user_id',
+            'body',
+        ];
+
+        public function user()
+        {
+            return $this->belongsTo('App\User');
+        }
+
+        public function likes()
+        {
+            return $this->hasMany('App\Like');
+        }
     }
-}
